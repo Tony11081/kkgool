@@ -22,7 +22,8 @@
       "Bash(npm install:*)",
       "Bash(SKIP_ENV_VALIDATION=1 npm run build)",
       "Bash(grep:*)",
-      "Bash(npm run dev:*)"
+      "Bash(touch:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": []
   }
