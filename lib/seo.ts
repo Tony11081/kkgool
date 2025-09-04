@@ -1,10 +1,10 @@
 export const seo = {
-  title: 'Kkgool | Smart Guides for Sports Apparel & Fan Culture',
+  title: 'Rube Club — 让 AI 真正帮你做事',
   description:
-    'Kkgool helps fans choose, care and enjoy sports gear—no hype, just clear guides. Authorized buying tips, sizing, care, training & travel.',
+    '连接 600+ 应用，用自然语言执行真实动作。这里收集最好用的 Rube 工作流与教程。',
   url: new URL(
     process.env.NODE_ENV === 'production'
-      ? 'https://kkgool.cc'
+      ? 'https://rube.club'
       : 'http://localhost:3000'
   ),
 } as const

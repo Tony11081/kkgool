@@ -53,6 +53,18 @@ export async function middleware(request: NextRequest) {
   const normalizedPath = normalizeURL(nextUrl.pathname)
   const isApi = normalizedPath.startsWith('/api/')
   
+  // 域名重定向 - rubeapp.com -> rube.club
+  if (request.nextUrl.hostname === 'rubeapp.com' || request.nextUrl.hostname === 'www.rubeapp.com') {
+    const redirectUrl = new URL(request.nextUrl.pathname + request.nextUrl.search, 'https://rube.club')
+    return NextResponse.redirect(redirectUrl, 301)
+  }
+  
+  // www.rube.club -> rube.club
+  if (request.nextUrl.hostname === 'www.rube.club') {
+    const redirectUrl = new URL(request.nextUrl.pathname + request.nextUrl.search, 'https://rube.club')
+    return NextResponse.redirect(redirectUrl, 301)
+  }
+  
   // 增强爬虫检测
   const userAgent = request.headers.get('user-agent')?.toLowerCase() || ''
   const isBot = /googlebot|bingbot|baiduspider|yandex|sogou/i.test(userAgent)
@@ -132,7 +144,40 @@ async function handlePublicRoute(req: NextRequest) {
     }
   }
 
-  return NextResponse.next()
+  const response = NextResponse.next()
+  
+  // 添加安全头
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  response.headers.set('X-XSS-Protection', '1; mode=block')
+  
+  // HSTS for HTTPS
+  if (req.nextUrl.protocol === 'https:') {
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload')
+  }
+  
+  // CSP for Rube Club
+  if (!isApi) {
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://vercel.live",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' data: https://cdn.sanity.io https://*.sanity.io https://i.imgur.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "connect-src 'self' https://*.sanity.io https://api.sanity.io https://api.resend.com https://vitals.vercel-insights.com",
+      "frame-src 'self' https://www.youtube.com",
+      "media-src 'self' https://cdn.sanity.io",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'none'"
+    ].join('; ')
+    
+    response.headers.set('Content-Security-Policy', csp)
+  }
+
+  return response
 }
 
 // 处理需要身份验证的API

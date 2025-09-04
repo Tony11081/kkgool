@@ -48,24 +48,24 @@ const FeatureDetail = ({ icon, title, description, index }: FeatureDetailProps) 
 export function FeatureIntro() {
   const features = [
     {
-      icon: '🛡️',
-      title: 'Authorized Buying',
-      description: 'Know where to buy legit gear and how to verify it. No counterfeit links—ever.'
+      icon: '🔄',
+      title: 'Automated Workflows',
+      description: 'Describe your needs in natural language, and Rube connects apps to execute complex tasks automatically.'
     },
     {
-      icon: '📏',
-      title: 'Sizing Without Guesswork',
-      description: 'US/EU/UK/Asia conversions and real fit notes for different body types.'
+      icon: '🚀',
+      title: 'Ready-to-Use Cases',
+      description: 'Copy-paste complete workflows covering email, documents, social, project management, and more scenarios.'
     },
     {
-      icon: '✂️',
-      title: 'Care & Longevity',
-      description: 'Wash, dry and store kits so numbers don\'t peel and colors don\'t fade.'
+      icon: '🎯',
+      title: 'Best Practice Guides',
+      description: 'From beginner to expert progression paths, including troubleshooting, security configs, and performance optimization.'
     },
     {
-      icon: '✈️',
-      title: 'Fan Travel Basics',
-      description: 'Visa, tickets, packing lists and matchday etiquette for away days.'
+      icon: '🌐',
+      title: '600+ App Support',
+      description: 'Covers mainstream work and life apps, with continuous updates on integration solutions and usage tips.'
     }
   ]
   
@@ -77,7 +77,7 @@ export function FeatureIntro() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          From confusion to clarity — in minutes.
+          From repetitive tasks to intelligent automation.
         </motion.h2>
         <motion.p 
           className="mt-4 max-w-xl mx-auto text-zinc-600 dark:text-zinc-400"
@@ -85,7 +85,7 @@ export function FeatureIntro() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          We cut through the noise and give you practical, honest advice on sports gear — from choosing authentic jerseys to training safely and traveling to matches.
+          No programming required. Use natural language to let AI handle complex cross-app tasks. From email classification to data sync, content generation to project management—configure once, benefit long-term.
         </motion.p>
       </div>
 

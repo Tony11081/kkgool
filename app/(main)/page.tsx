@@ -22,27 +22,27 @@ export default async function BlogHomePage() {
         </Container>
       </div>
 
-      {/* Trusted by section */}
+      {/* Popular apps section */}
       <section className="bg-white dark:bg-zinc-900 py-12">
         <div className="text-center">
           <p className="text-sm text-zinc-500 uppercase tracking-wider mb-4 dark:text-zinc-400">
-            Trusted by sports fans, coaches, and athletes worldwide
+            Popular app integrations
           </p>
           <div className="flex flex-wrap justify-center gap-6 grayscale opacity-70">
             <div className="flex items-center justify-center h-6">
-              <span className="text-xl">⚽ Football</span>
+              <span className="text-xl">📧 Gmail</span>
             </div>
             <div className="flex items-center justify-center h-6">
-              <span className="text-xl">🏀 Basketball</span>
+              <span className="text-xl">💬 Slack</span>
             </div>
             <div className="flex items-center justify-center h-6">
-              <span className="text-xl">🏃‍♂️ Running</span>
+              <span className="text-xl">📝 Notion</span>
             </div>
             <div className="flex items-center justify-center h-6">
-              <span className="text-xl">🎾 Tennis</span>
+              <span className="text-xl">📺 YouTube</span>
             </div>
             <div className="flex items-center justify-center h-6">
-              <span className="text-xl">🏈 American Football</span>
+              <span className="text-xl">🗂️ Google Drive</span>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default async function BlogHomePage() {
           <div className="flex flex-col gap-6 pt-6">
             <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
               <span className="mr-2 text-xl">📚</span>
-              <span>Sports Guides</span>
+              <span>Workflows</span>
             </h2>
             <BlogPosts posts={posts} />
           </div>
@@ -74,18 +74,18 @@ export default async function BlogHomePage() {
             {settings?.resume && 
               <div className="rounded-xl border border-zinc-100 p-6 dark:border-zinc-700/40">
                 <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  <span className="mr-2 text-xl">⭐</span>
-                  <span>Featured Gear</span>
+                  <span className="mr-2 text-xl">🛠️</span>
+                  <span>Toolbox</span>
                 </h2>
                 <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  Our top-rated gear reviews and buying guides for sports enthusiasts.
+                  Copy-ready prompt templates, scripts, and configuration files to boost productivity.
                 </p>
                 <div className="mt-6">
                   <a
                     href="/gear"
                     className="text-sm font-medium text-lime-600 transition hover:text-lime-700 dark:text-lime-400 dark:hover:text-lime-300"
                   >
-                    Browse All Gear →
+                    Browse All Tools →
                   </a>
                 </div>
               </div>

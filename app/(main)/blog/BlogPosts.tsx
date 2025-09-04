@@ -10,14 +10,15 @@ interface BlogPostsProps {
   posts: Post[]
 }
 
-export async function getPostsWithPagination(page: number, pageSize: number) {
+export async function getPostsWithPagination(page: number, pageSize: number, filters?: { app?: string; level?: string }) {
   const posts = await getLatestBlogPosts({ 
     limit: pageSize, 
     offset: (page - 1) * pageSize,
-    forDisplay: true 
+    forDisplay: true,
+    filters
   }) || []
   
-  const total = await getTotalBlogPosts()
+  const total = await getTotalBlogPosts(filters)
   return { posts, total }
 }
 
@@ -36,7 +37,12 @@ export async function BlogPosts({ posts }: BlogPostsProps) {
   return (
     <>
       {posts.map((post, idx) => (
-        <BlogPostCard post={post} views={views[idx] ?? 0} key={post._id} />
+        <BlogPostCard 
+          post={post} 
+          views={views[idx] ?? 0} 
+          key={post._id}
+          priority={idx < 4} // Prioritize first 4 images for LCP
+        />
       ))}
     </>
   )
